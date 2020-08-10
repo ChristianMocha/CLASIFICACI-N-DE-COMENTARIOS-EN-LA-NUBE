@@ -1,0 +1,73 @@
+{% extends 'index.html' %}
+{% block titulo %}Crear comentario {% endblock titulo %}
+
+{% block cuerpo %}
+
+    <!-- Default form contact -->
+    <form class=" text-center border border-light p-5 " method="post">
+        {% csrf_token %}
+
+        <div class="row row-cols-1 row-cols-md-2 elegant-color white-text rounded-bottom">
+
+            <div class="col-8">
+
+
+                <div class="view overlay " style="width: 250px; height: 350px;
+                        margin-left: 3em;">
+                    <img class="card-img-top" src="{{ pelicula.imagen.url }}"
+                         alt="Card image cap {{ pelicula.titulo }}">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <hr class="hr-light">
+
+                <h4 class="card-title">{{ pelicula.titulo }}</h4>
+
+
+                <p class="card-text"><span><strong>AÑO:</strong></span> {{ pelicula.anio }}</p>
+                <p class="card-text"><span><strong>GENERO:</strong></span> {{ pelicula.genero }} </p>
+                <p class="card-text"><span><strong>DESCRIPCION:</strong></span> {{ pelicula.descripcion }}</p>
+            </div>
+
+            <br>
+            <div class="col-4">
+                <!-- Message -->
+                <div class="form-group">
+                    <textarea class="form-control rounded-0 col mb-4" id="exampleFormControlTextarea2" rows="3"
+                              placeholder="Message" name="comment" id="comment"></textarea>
+                </div>
+            </div>
+
+
+        </div>
+        <br>
+        <br>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <!-- Send button -->
+                <button class="btn btn-info btn-block btn-md mb-2" type="submit">Guardar Comentario</button>
+            </div>
+        </div>
+
+        <h1 class="row justify-content-left">Comentario</h1>
+        {% for comentario in comentario %}
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class=" border border-light p-3 col mb-5 elegant-color white-text rounded-bottom row justify-content-left">
+                    <!-- Message -->
+
+                    <div class="form-group ">
+                        <p>{{ comentario.comments }}</p>
+                        <p>{{ comentario.clasePredecida }}</p>
+                        <p>{{ comentario.probabiliad }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </form>
+    <!-- Default form contact -->
+
+
+
+{% endblock cuerpo %}
